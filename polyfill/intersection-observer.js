@@ -10,12 +10,19 @@
 (function(window, document) {
 'use strict';
 
+const isFF = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+
+const nativeSupport = (
+  'IntersectionObserver' in window &&
+  'IntersectionObserverEntry' in window &&
+  'intersectionRatio' in window.IntersectionObserverEntry.prototype
+);
 
 // Exits early if all IntersectionObserver and IntersectionObserverEntry
 // features are natively supported.
-if ('IntersectionObserver' in window &&
-    'IntersectionObserverEntry' in window &&
-    'intersectionRatio' in window.IntersectionObserverEntry.prototype) {
+
+// If isFF polyfill anyway, b/c FF impl does not work in strange ways.
+if (nativeSupport && !isFF) {
 
   // Minimal polyfill for Edge 15's lack of `isIntersecting`
   // See: https://github.com/w3c/IntersectionObserver/issues/211
