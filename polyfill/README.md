@@ -1,5 +1,8 @@
 # `IntersectionObserver` polyfill
 
+NOTE:
+This is a special fork of 0.4.3 that forces firefox to use the polyfill rather than the native implementation. This is a stop gap for extreme misbehavior in the firefox implelementation.
+
 This library polyfills the native [`IntersectionObserver`](http://w3c.github.io/IntersectionObserver/) API in unsupporting browsers. See the [API documentation](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) for usage information.
 
 - [Installation](#installation)
